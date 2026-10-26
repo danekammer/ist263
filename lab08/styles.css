@@ -29,3 +29,82 @@ nav a:hover {
 .evenrow {
   background-color: #E4E8EE;
 }
+
+/* ===== Lab 08: Header and main ===== */
+header img {
+  max-width: 100%;                /* banner never spills past the page */
+}
+
+main {
+  padding: 20px;                  /* space between page edge and content */
+}
+
+/* ===== Lab 08: Footer tagline (float) ===== */
+.tagline {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+/* ===== Lab 08: Contact page layout (flexbox) ===== */
+.row {
+  display: flex;                  /* columns side by side */
+  gap: 20px;                      /* space between the two columns */
+  margin-bottom: 30px;            /* space between row 1 and row 2 */
+}
+
+.col {
+  flex: 1;                        /* equal widths, fills the row */
+}
+
+.box {
+  background-color: #E4E8EE;      /* background color */
+  border-radius: 15px;            /* rounded corners */
+  padding: 20px;                  /* space inside the boxes */
+}
+
+/* Map fills its column */
+.row2 iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  border: 0;
+  border-radius: 10px;
+}
+
+/* Form styling */
+.form-field {
+  margin-bottom: 15px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-field input[type="text"],
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #AAB4C3;
+  border-radius: 8px;
+  box-sizing: border-box;         /* keeps padding inside the 100% width */
+  font-family: inherit;
+}
+
+input[type="submit"] {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  background-color: #0B2545;      /* matches your nav color */
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #13A89E;      /* matches your nav hover color */
+}

@@ -1,0 +1,148 @@
+body {
+  background-color: #F5F5F5;
+  color: #222222;
+}
+
+a {
+  color: #1A5FB4;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #0B2545;
+}
+
+nav {
+  background-color: #0B2545;
+  color: #FFFFFF;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+nav a {
+  color: #FFFFFF;
+}
+
+nav a:hover {
+  background-color: #13A89E;
+}
+
+.evenrow {
+  background-color: #E4E8EE;
+}
+
+.responsive-img {
+  max-width: 100%;
+}
+
+main {
+  padding: 20px;
+}
+
+.tagline {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.col {
+  flex: 1 1 300px;
+}
+
+.box {
+  background-color: #E4E8EE;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.row2 iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 350px;
+  border: 0;
+  border-radius: 10px;
+}
+
+.form-field {
+  margin-bottom: 15px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-field input[type="text"],
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #AAB4C3;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+input[type="submit"] {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  background-color: #0B2545;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #13A89E;
+}
+
+.skillsheading {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.skillsflex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.skillstable,
+.skillsimage {
+  flex: 1 1 300px;
+}
+
+.skillstable table {
+  margin: 0 auto;
+}
+
+.skillsimage {
+  text-align: center;
+}
+
+.skillsimage img {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+
+  nav a {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  nav span {
+    display: none;
+  }
+
+}

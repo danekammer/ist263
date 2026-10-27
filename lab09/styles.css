@@ -48,7 +48,7 @@ main {
   clear: both;
 }
 
-/* ===== Lab 08: Contact page layout (flexbox) ===== */
+/* ===== Lab 08/09: Contact page layout (flexbox) ===== */
 .row {
   display: flex;                  /* columns side by side */
   gap: 20px;                      /* space between the two columns */
@@ -107,4 +107,39 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background-color: #13A89E;      /* matches your nav hover color */
+}
+
+/* ===== Lab 09: Skills page ===== */
+
+/* Center the heading (block element): shrink the box to fit the text,
+   then use auto left/right margins to center it */
+.skillsheading {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+/* Flexbox with two containers side by side */
+.skillsflex {
+  display: flex;
+}
+
+/* Each container takes half the width */
+.skillstable,
+.skillsimage {
+  flex-basis: 50%;
+}
+
+/* Center the table in its container (block centering with margins) */
+.skillstable table {
+  margin: 0 auto;
+}
+
+/* Center the image in its container (inline centering) */
+.skillsimage {
+  text-align: center;
+}
+
+/* Keep the image from overflowing its container */
+.skillsimage img {
+  max-width: 100%;
 }

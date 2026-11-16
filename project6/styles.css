@@ -1,0 +1,814 @@
+/* =========================================================
+   Teaching in Etinan | IST 263 Milestone 6
+   Mobile-first: base styles are for phones, then media
+   queries add the wider layout.
+
+   Color scheme: classroom chalkboard
+   --board   deep chalkboard green (headings, buttons, footer)
+   --pencil  yellow pencil accent (highlights, focus)
+   --chalk   soft grey-green (header, panels)
+   --paper   page background
+   --ink     body text
+   ========================================================= */
+
+:root {
+  --board: #1e3b33;
+  --board-dark: #152a24;
+  --pencil: #f4b63f;
+  --chalk: #e4ebe7;
+  --paper: #fbfcfb;
+  --ink: #18221f;
+  --line: #c8d3ce;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--board);
+  line-height: 1.2;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--board);
+}
+
+a:focus-visible,
+.nav-toggle:focus-visible + .nav-button {
+  outline: 3px solid var(--pencil);
+  outline-offset: 3px;
+}
+
+/* ---------- Header and navigation (mobile) ---------- */
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;                 /* lets the menu drop to its own row */
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  background: var(--chalk);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--board);
+}
+
+/* The checkbox is hidden but still keyboard-focusable */
+.nav-toggle {
+  position: absolute;
+  opacity: 0;
+}
+
+.nav-button {
+  padding: 0.4rem 0.9rem;
+  border: 2px solid var(--board);
+  border-radius: 6px;
+  font-weight: bold;
+  color: var(--board);
+  cursor: pointer;
+}
+
+.site-header nav {
+  display: none;                   /* closed by default on phones */
+  width: 100%;
+}
+
+.nav-toggle:checked ~ nav {
+  display: block;                  /* open when the checkbox is checked */
+}
+
+.site-header ul {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;          /* stacked links on phones */
+}
+
+.site-header nav a {
+  display: block;
+  padding: 0.75rem 0.25rem;
+  border-top: 1px solid var(--line);
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.site-header nav a[aria-current="page"] {
+  font-weight: bold;
+  color: var(--board);
+  box-shadow: inset 4px 0 0 var(--pencil);
+  padding-left: 0.75rem;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: 24rem;
+  padding: 2rem 1.25rem;
+  background:
+    linear-gradient(rgba(21, 42, 36, 0.35), rgba(21, 42, 36, 0.35)),
+    url("images/IMG_3054.jpeg") center / cover no-repeat,
+    var(--board);
+}
+
+.hero-card {
+  max-width: 30rem;
+  padding: 1.5rem;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+}
+
+.hero-card h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.9rem;
+}
+
+.hero-card p {
+  margin: 0 0 1.25rem;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.1rem;
+  border: 2px solid var(--board);
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn-solid {
+  background: var(--board);
+  color: #fff;
+}
+
+.btn-solid:hover {
+  background: var(--pencil);
+  border-color: var(--pencil);
+  color: var(--board-dark);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--board);
+}
+
+.btn-outline:hover {
+  background: var(--chalk);
+}
+
+/* ---------- Page sections ---------- */
+
+.section {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+}
+
+.section h2 {
+  margin: 0 0 1rem;
+  font-size: 1.6rem;
+}
+
+.photo {
+  width: 100%;
+  object-fit: cover;
+  background: var(--chalk);        /* shows if a photo is missing */
+  border-radius: 8px;
+}
+
+/* Why I went: stacked on phones, side by side on wider screens */
+.why {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.why-text p {
+  margin-top: 0;
+}
+
+.why-photo {
+  margin: 0;
+}
+
+.why-photo figcaption {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: #53625d;
+}
+
+/* Cards: flex-wrap lets them drop to 1 or 2 per row on their own */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.card {
+  flex: 1 1 15rem;                 /* grow, shrink, start at 15rem wide */
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card .photo {
+  border-radius: 0;
+  aspect-ratio: 3 / 2;
+}
+
+.card-body {
+  padding: 1rem 1.1rem 1.25rem;
+}
+
+.card-body h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+}
+
+.card-body p {
+  margin: 0;
+}
+
+/* Explore links */
+.explore {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.explore-link {
+  flex: 1 1 18rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--chalk);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.explore-link:hover {
+  border-color: var(--board);
+}
+
+.thumb {
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: cover;
+  background: var(--line);
+  border-radius: 6px;
+}
+
+.explore-text {
+  flex: 1;                         /* pushes the arrow to the far right */
+  display: flex;
+  flex-direction: column;
+}
+
+.explore-text strong {
+  color: var(--board);
+}
+
+.arrow {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--board);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  margin-top: 2rem;
+  padding: 2rem 1.25rem 1rem;
+  background: var(--board-dark);
+  color: var(--chalk);
+}
+
+.footer-columns {
+  max-width: 64rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-col {
+  flex: 1 1 12rem;
+}
+
+.footer-about {
+  flex-grow: 2;
+}
+
+.footer-title {
+  margin: 0 0 0.5rem;
+  font-weight: bold;
+  color: var(--pencil);
+}
+
+.footer-col p {
+  margin-top: 0;
+}
+
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-col li {
+  margin-bottom: 0.35rem;
+}
+
+.site-footer a {
+  color: var(--chalk);
+}
+
+.copyright {
+  max-width: 64rem;
+  margin: 1.5rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(228, 235, 231, 0.3);
+  font-size: 0.85rem;
+}
+
+/* =========================================================
+   Media query: tablets and up (700px+)
+   ========================================================= */
+
+@media (min-width: 700px) {
+
+  /* Navigation becomes a single row; hide the Menu button */
+  .nav-button {
+    display: none;
+  }
+
+  .site-header nav,
+  .nav-toggle:checked ~ nav {
+    display: block;
+    width: auto;
+  }
+
+  .site-header ul {
+    margin: 0;
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .site-header nav a {
+    padding: 0.25rem 0;
+    border-top: 0;
+    border-bottom: 3px solid transparent;
+  }
+
+  .site-header nav a:hover {
+    border-bottom-color: var(--line);
+  }
+
+  .site-header nav a[aria-current="page"] {
+    box-shadow: none;
+    padding-left: 0;
+    border-bottom-color: var(--board);
+  }
+
+  /* Hero gets taller and the text bigger */
+  .hero {
+    min-height: 30rem;
+    padding: 3rem 2.5rem;
+  }
+
+  .hero-card h1 {
+    font-size: 2.4rem;
+  }
+
+  /* Why I went: photo on the left, text on the right */
+  .why {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .why-photo {
+    flex: 1 1 45%;
+  }
+
+  .why-text {
+    flex: 1 1 55%;
+  }
+}
+
+/* =========================================================
+   Media query: desktops (1000px+)
+   ========================================================= */
+
+@media (min-width: 1000px) {
+  .site-header {
+    padding: 1rem 3rem;
+  }
+
+  .hero {
+    padding: 3rem 5rem;
+  }
+}
+
+/* =========================================================
+   SHARED EXTRAS (used on more than one page)
+   ========================================================= */
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.media {
+  margin: 0;
+}
+
+.media figcaption {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: #53625d;
+}
+
+/* Cards with a green dot (challenges, ways to get involved) */
+.info-card {
+  flex: 1 1 15rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.info-card::before {
+  content: "";
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--board);
+}
+
+.info-card h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.1rem;
+}
+
+.info-card p {
+  margin: 0;
+}
+
+.cards-four .info-card {
+  flex-basis: 13rem;
+}
+
+/* =========================================================
+   CLASSROOM PAGE
+   ========================================================= */
+
+.page-hero {
+  background: var(--chalk);
+  border-bottom: 1px solid var(--line);
+}
+
+.page-hero-inner {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.page-hero h1 {
+  margin: 0 0 0.75rem;
+  font-size: 2rem;
+}
+
+.page-hero p {
+  margin: 0 0 1.25rem;
+}
+
+.page-hero .photo {
+  aspect-ratio: 3 / 2;
+}
+
+/* Two columns that stack on phones */
+.split {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.split h2 {
+  margin-top: 0;
+}
+
+.split p {
+  margin-top: 0;
+}
+
+.lesson-box {
+  padding: 1.1rem 1.25rem;
+  background: var(--chalk);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.lesson-box h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.lesson-box ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.lesson-box li {
+  margin-bottom: 0.35rem;
+}
+
+.band {
+  background: #eef2f0;
+}
+
+.moments-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.moments-layout .media {
+  flex: 1 1 18rem;
+}
+
+.moment-list {
+  flex: 1 1 22rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.moment-card {
+  padding: 1.1rem 1.25rem;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+}
+
+.moment-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+}
+
+.moment-card p {
+  margin: 0;
+}
+
+.closing {
+  margin-top: 1.5rem;
+}
+
+/* =========================================================
+   BIGGER PICTURE PAGE
+   ========================================================= */
+
+.hero-bigger {
+  background:
+    linear-gradient(rgba(21, 42, 36, 0.45), rgba(21, 42, 36, 0.45)),
+    url("images/IMG_3045.jpeg") center / cover no-repeat,
+    var(--board);
+}
+
+.hero-center {
+  justify-content: center;
+  min-height: 16rem;
+  text-align: center;
+}
+
+.hero-center .hero-card {
+  width: 100%;
+  max-width: 32rem;
+}
+
+.hero-center .hero-card p {
+  margin: 0;
+  color: #44524d;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.stat {
+  flex: 1 1 12rem;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  background: var(--chalk);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.stat p {
+  margin: 0;
+}
+
+.stat-number {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.2rem;
+  font-weight: bold;
+  line-height: 1.1;
+  color: var(--board);
+}
+
+.stat-label {
+  margin-top: 0.4rem;
+}
+
+.stat-source {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+}
+
+/* Article + sidebar: stacked on phones, side by side on desktop */
+.article-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.article-main {
+  min-width: 0;
+}
+
+.article-main section {
+  margin-bottom: 2rem;
+}
+
+.article-main h2 {
+  margin-top: 0;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.side-box {
+  padding: 1rem 1.1rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.side-box-accent {
+  background: var(--chalk);
+  border: 2px solid var(--ink);
+}
+
+.side-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.side-box p {
+  margin-top: 0;
+}
+
+.side-box ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.side-box li {
+  padding: 0.2rem 0;
+}
+
+.quote-band {
+  padding: 2.5rem 1.25rem;
+  text-align: center;
+  background: var(--board);
+  color: var(--chalk);
+}
+
+.quote-big {
+  margin: 0 0 0.5rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.quote-sub {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   MEDIA QUERY: tablets and up (700px+), extras
+   ========================================================= */
+
+@media (min-width: 700px) {
+
+  .page-hero-inner {
+    flex-direction: row;
+    align-items: center;
+    padding: 2.5rem 2.5rem;
+  }
+
+  .page-hero-text {
+    flex: 1 1 50%;
+  }
+
+  .page-hero .photo {
+    flex: 1 1 45%;
+  }
+
+  .page-hero h1 {
+    font-size: 2.6rem;
+  }
+
+  .split {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .split > * {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .hero-center {
+    min-height: 20rem;
+  }
+
+  .quote-big {
+    font-size: 2.2rem;
+  }
+}
+
+/* =========================================================
+   MEDIA QUERY: desktops (900px+), sidebar goes to the right
+   ========================================================= */
+
+@media (min-width: 900px) {
+
+  .article-layout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2.5rem;
+  }
+
+  .article-main {
+    flex: 1 1 0;
+  }
+
+  .sidebar {
+    flex: 0 0 18rem;
+    position: sticky;
+    top: 1rem;
+  }
+}
